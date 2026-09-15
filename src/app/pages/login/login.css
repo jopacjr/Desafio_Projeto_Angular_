@@ -1,0 +1,132 @@
+/* Container Principal Dividido */
+.login-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Lado Esquerdo (Branco com o Veículo) */
+.login-left {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.car-image {
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* Lado Direito (Cinza Claro com o Formulário) */
+.login-right {
+  flex: 1;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Logo da Ford */
+.logo-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.ford-logo {
+  height: 65px;
+  width: auto;
+}
+
+/* Título */
+.title {
+  color: #00337c;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Grupos de Inputs */
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: #999999;
+}
+
+.form-input:focus {
+  border-color: #00337c;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+
+/* Botão Entrar */
+.btn-submit {
+  width: 100%;
+  background-color: #00337c;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #002255;
+}

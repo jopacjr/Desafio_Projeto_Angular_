@@ -1,0 +1,77 @@
+.home-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.home-main {
+  flex: 1;
+  position: relative;
+  /* Imagem de fundo apontando para o veículo (Ranger) */
+  background: url('../../../assets/ranger.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.btn-logout {
+  background-color: #00337c;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #002255;
+}
+
+/* Cartão com transparência sobre o fundo */
+.welcome-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 35px 45px;
+  width: 320px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.card-title {
+  color: #555555;
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  font-weight: normal;
+}
+
+.welcome-text {
+  color: #0080ff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 25px 0;
+}
+
+.dashboard-link {
+  color: #00337c;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}

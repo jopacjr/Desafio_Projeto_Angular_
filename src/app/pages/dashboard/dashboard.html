@@ -1,0 +1,83 @@
+<div class="dashboard-layout">
+  <!-- Menu Lateral -->
+  <app-menu></app-menu>
+
+  <main class="dashboard-main">
+    <!-- Título do Dashboard -->
+    <h1 class="dashboard-title">Dashboard FORD</h1>
+
+    <!-- Seção Superior: Cartões de Filtro e Indicadores -->
+    <section class="cards-container">
+      <!-- Cartão 1: Seleção do Veículo -->
+      <div class="card filter-card">
+        <label for="vehicleSelect" class="card-label">Veículo</label>
+        <select 
+          id="vehicleSelect" 
+          class="vehicle-select" 
+          [(ngModel)]="selectedVehicle" 
+          (change)="onVehicleChange()">
+          <option *ngFor="let vehicle of vehicles" [value]="vehicle.name">
+            {{ vehicle.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Cartões Indicadores -->
+      <div class="card stat-card">
+        <span class="card-label">Total de Vendas</span>
+        <span class="stat-number">{{ stats.totalVendas }}</span>
+        <span class="stat-unit">Unid.</span>
+      </div>
+
+      <div class="card stat-card">
+        <span class="card-label">Conectados</span>
+        <span class="stat-number">{{ stats.conectados }}</span>
+        <span class="stat-unit">Unid.</span>
+      </div>
+
+      <div class="card stat-card">
+        <span class="card-label">Update Software</span>
+        <span class="stat-number">{{ stats.updateSoftware }}</span>
+        <span class="stat-unit">Unid.</span>
+      </div>
+    </section>
+
+    <!-- Seção Central: Imagem do Veículo Selecionado -->
+    <section class="vehicle-display">
+      <img [src]="selectedVehicleImage" [alt]="selectedVehicle" class="vehicle-image">
+    </section>
+
+    <!-- Seção Inferior: Tabela de Dados por VIN -->
+    <section class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input 
+                type="text" 
+                class="vin-input" 
+                placeholder="2FRHDUYS2Y63NHD22454" 
+                [(ngModel)]="vinQuery" 
+                (input)="onVinSearch()">
+            </td>
+            <td>{{ vehicleData.odometro }}</td>
+            <td>{{ vehicleData.combustivel }}</td>
+            <td>{{ vehicleData.status }}</td>
+            <td>{{ vehicleData.lat }}</td>
+            <td>{{ vehicleData.long }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

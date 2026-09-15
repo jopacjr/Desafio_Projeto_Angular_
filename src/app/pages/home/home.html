@@ -1,0 +1,19 @@
+<div class="home-layout">
+  <!-- Menu Lateral -->
+  <app-menu></app-menu>
+
+  <!-- Conteúdo Principal com Imagem de Fundo -->
+  <main class="home-main">
+    <!-- Barra Superior de Ações -->
+    <header class="home-header">
+      <button class="btn-logout" (click)="onLogout()">Sair</button>
+    </header>
+
+    <!-- Modal/Cartão Central de Boas-Vindas -->
+    <div class="welcome-card">
+      <h3 class="card-title">Sistema de dados FORD</h3>
+      <p class="welcome-text">Seja bem-vindo(a)!</p>
+      <a routerLink="/dashboard" class="dashboard-link">Acessar Dashboard</a>
+    </div>
+  </main>
+</div>
