@@ -9,6 +9,9 @@ import { MenuComponent } from '../../componentes/menu/menu';
   styleUrl: './home.css',
 })
 export class Home {
+onLogout() {
+throw new Error('Method not implemented.');
+}
 
   constructor(private auth: Auth) {}
   logout():void{

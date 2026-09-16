@@ -10,6 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './menu.css'
 })
 export class MenuComponent {
+logout() {
+throw new Error('Method not implemented.');
+}
   // Inicia fechado por padrão
   menuAberto: boolean = false;
 

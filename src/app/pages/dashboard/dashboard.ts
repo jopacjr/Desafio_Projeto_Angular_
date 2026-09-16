@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { MenuComponent } from '../../componentes/menu/menu';
 
 @Component({
@@ -17,7 +18,7 @@ export class Dashboard implements OnInit {
 
   vehicleOptions: string[] = ['Ranger', 'Mustang', 'Territory', 'Bronco Sport'];
   selectedVehicle: string = 'Mustang';
-  vehicleImage: string = '';
+  vehicleImage: string = 'assets/mustang.jpg';
 
   totalVendas: number = 1500;
   conectados: number = 500;
@@ -33,47 +34,52 @@ export class Dashboard implements OnInit {
     long: '-35,2314'
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.onVehicleChange();
   }
 
+  onLogout(): void {
+    this.router.navigate(['/login']);
+  }
+
   onVehicleChange(): void {
+    // 1. Atualiza de imediato para a imagem local na pasta assets
     this.updateVehicleImage();
+    // 2. Busca dados atualizados da API
     this.fetchDashboardData();
   }
 
-  // Mapeia os arquivos exatos com a extensão .jpg conforme a estrutura enviada
   updateVehicleImage(): void {
     const imageMap: { [key: string]: string } = {
-      'Ranger': 'ranger.jpg',
-      'Mustang': 'mustang.jpg',
-      'Territory': 'territory.jpg',
-      'Bronco Sport': 'broncoSport.jpg'
+      'Ranger': 'assets/ranger.jpg',
+      'Mustang': 'assets/mustang.jpg',
+      'Territory': 'assets/territory.jpg',
+      'Bronco Sport': 'assets/broncoSport.jpg'
     };
 
-    const fileName = imageMap[this.selectedVehicle] || 'broncoSport.jpg';
-    
-    // Tenta primeiro carregar da pasta local de assets do Angular
-    this.vehicleImage = `assets/${fileName}`;
+    this.vehicleImage = imageMap[this.selectedVehicle] || 'assets/mustang.jpg';
   }
 
-  // Caso o arquivo local não responda, tenta buscar as variações no back-end
+  // Tratamento de erro caso a imagem local não seja encontrada em assets/
   onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
-
-    if (this.selectedVehicle === 'Bronco Sport') {
-      if (imgElement.src.includes('assets/broncoSport.jpg')) {
-        imgElement.src = `${this.apiUrl}/broncoSport.jpg`;
-      } else if (imgElement.src.includes('broncoSport.jpg')) {
-        imgElement.src = `${this.apiUrl}/img/broncoSport.jpg`;
-      } else if (!imgElement.src.includes('broncoSport.png')) {
-        imgElement.src = `assets/broncoSport.png`;
-      }
-    } else {
-      const fileName = this.selectedVehicle.toLowerCase();
-      imgElement.src = `${this.apiUrl}/${fileName}.jpg`;
+    
+    // Tenta carregar usando arquivos estáticos do servidor Node
+    const nameMap: { [key: string]: string } = {
+      'Ranger': 'ranger',
+      'Mustang': 'mustang',
+      'Territory': 'territory',
+      'Bronco Sport': 'broncoSport'
+    };
+    
+    const fileName = nameMap[this.selectedVehicle];
+    if (!imgElement.src.includes(this.apiUrl)) {
+      imgElement.src = `${this.apiUrl}/img/${fileName}.png`;
     }
   }
 
@@ -87,16 +93,17 @@ export class Dashboard implements OnInit {
           if (data.conectados) this.conectados = data.conectados;
           if (data.updateSoftware) this.updateSoftware = data.updateSoftware;
 
-          // Se a API retornar a imagem explicitamente
-          if (data.img) {
-            this.vehicleImage = data.img.startsWith('http') 
-              ? data.img 
-              : `${this.apiUrl}/${data.img.replace(/^\/+/, '')}`;
+          // Se a API retornar o campo de imagem válido, atualiza o caminho
+          const apiImg = data.imagem || data.img;
+          if (apiImg) {
+            this.vehicleImage = apiImg.startsWith('http') 
+              ? apiImg 
+              : `${this.apiUrl}/${apiImg.replace(/^\/+/, '')}`;
           }
         }
       },
       error: () => {
-        // Mantém o fallback de imagem definido em updateVehicleImage()
+        // Mantém a imagem definida por updateVehicleImage()
       }
     });
   }

@@ -141,3 +141,25 @@
   border-radius: 3px;
   outline: none;
 }
+
+/* Header para posicionar o botão Logout no canto superior direito */
+.dashboard-header {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  z-index: 10;
+}
+
+.btn-logout {
+  color: #2618a5;
+  font-weight: bold;
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-logout:hover {
+  text-decoration: underline;
+}
