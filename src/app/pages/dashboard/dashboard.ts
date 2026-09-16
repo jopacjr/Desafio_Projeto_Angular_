@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { Menu } from '../../componentes/menu/menu';
+import { MenuComponent } from '../../componentes/menu/menu';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Menu],
+  imports: [MenuComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
+onVehicleChange() {
+throw new Error('Method not implemented.');
+}
+selectedVehicle: any;
 
 }

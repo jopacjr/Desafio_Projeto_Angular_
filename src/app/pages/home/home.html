@@ -1,19 +1,21 @@
-<div class="home-layout">
-  <!-- Menu Lateral -->
- <app-menu></app-menu>
+<div class="home-container">
 
-  <!-- Conteúdo Principal com Imagem de Fundo -->
+    <!-- Menu Lateral -->
+  <app-menu></app-menu>
+  <!-- Botão Sair no Canto Superior Direito -->
+  <header class="home-header">
+    <a href="javascript:void(0)" class="btn-logout" (click)="onLogout()">Sair</a>
+  </header>
+
+  <!-- Seção Central com Veículo e Modal Translúcido -->
   <main class="home-main">
-    <!-- Barra Superior de Ações -->
-    <header class="home-header">
-      <button class="btn-logout" (click)="onLogout()">Sair</button>
-    </header>
-
-    <!-- Modal/Cartão Central de Boas-Vindas -->
-    <div class="welcome-card">
-      <h3 class="card-title">Sistema de dados FORD</h3>
-      <p class="welcome-text">Seja bem-vindo(a)!</p>
-      <a routerLink="/dashboard" class="dashboard-link">Acessar Dashboard</a>
+    <div class="content-wrapper">
+      <img src="img/ranger.png" alt="Ford Ranger" class="vehicle-image">
+      
+      <div class="welcome-card">
+        <p class="card-subtitle">Sistema de dados FORD</p>
+        <h2 class="card-title">Seja bem vindo(a)!</h2>
+      </div>
     </div>
   </main>
 </div>

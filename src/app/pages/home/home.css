@@ -1,77 +1,91 @@
-.home-layout {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   font-family: Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
   overflow: hidden;
 }
 
-.home-main {
-  flex: 1;
-  position: relative;
-  /* Imagem de fundo apontando para o veículo (Ranger) */
-  background: url('../../../assets/ranger.png') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Header apenas para o botão Sair */
 .home-header {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 25px;
+  z-index: 10;
 }
 
 .btn-logout {
-  background-color: #00337c;
-  color: #ffffff;
-  border: none;
-  padding: 8px 18px;
-  font-size: 14px;
+  color: #18a57b; /* Tom verde idêntico ao layout */
   font-weight: bold;
-  border-radius: 4px;
+  font-size: 15px;
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .btn-logout:hover {
-  background-color: #002255;
+  text-decoration: underline;
 }
 
-/* Cartão com transparência sobre o fundo */
+/* Área Central */
+.home-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 850px;
+}
+
+/* Imagem da Picape Ranger */
+.vehicle-image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Card Transparente Sobreposto ao Meio da Imagem */
 .welcome-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #cccccc;
-  border-radius: 6px;
-  padding: 35px 45px;
-  width: 320px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(4px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(235, 238, 240, 0.82); /* Efeito fosco/translúcido cinza claro */
+  border: 1px solid rgba(210, 210, 210, 0.6);
+  border-radius: 4px;
+  width: 360px;
+  padding: 35px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(2px);
+}
+
+.card-subtitle {
+  color: #555555;
+  font-size: 13px;
+  margin-bottom: 22px;
 }
 
 .card-title {
-  color: #555555;
-  font-size: 14px;
-  margin: 0 0 15px 0;
-  font-weight: normal;
-}
-
-.welcome-text {
-  color: #0080ff;
+  color: #1e70bf; /* Azul dos links e destaques */
   font-size: 18px;
-  font-weight: bold;
-  margin: 0 0 25px 0;
-}
-
-.dashboard-link {
-  color: #00337c;
-  text-decoration: underline;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
+  font-weight: normal;
 }

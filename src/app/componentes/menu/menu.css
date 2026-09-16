@@ -1,44 +1,107 @@
-.sidebar {
-  width: 220px;
+/* Botão verde fixo de 3 traços */
+.hamburger-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: #1a18a5; /* Azul exato da imagem */
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 100;
+  outline: none;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Fundo para fechar ao clicar fora */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background-color: #e6e6e6;
-  border-right: 1px solid #ccc;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 998;
+}
+
+/* Container Gaveta do Menu Lateral */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: -230px; /* Escondido por padrão */
+  width: 210px;
+  height: 100vh;
+  background-color: #f2f2f2;
+  border-right: 1px solid #dcdcdc;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  transition: left 0.25s ease-in-out;
+  z-index: 999;
   box-sizing: border-box;
 }
 
-.sidebar-logo {
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid #d0d0d0;
+/* Classe ativada ao clicar nos traços */
+.sidebar-container.aberto {
+  left: 0;
 }
 
-.logo-img {
-  width: 90px;
+/* Topo do menu */
+.sidebar-top {
+  padding: 15px 0 0 20px;
+}
+
+.hamburger-inside-btn {
+  background: transparent;
+  border: none;
+  color: #2618a5;
+  font-size: 26px;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Seção da Logo Ford */
+.sidebar-logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0 20px 0;
+  border-bottom: 1px solid #e0e0e0; /* Divisória sob a logo */
+}
+
+.ford-logo-img {
+  width: 105px;
   height: auto;
+  object-fit: contain;
 }
 
-.sidebar-nav {
+/* Lista do Menu com estilo fiel */
+.sidebar-menu-list {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  width: 100%;
 }
 
-.nav-item {
-  padding: 15px 25px;
-  color: #333333;
-  text-decoration: none;
+.menu-link {
+  display: block;
+  padding: 16px 20px;
+  color: #1826a5; /* azul */
+  font-weight: bold;
   font-size: 15px;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  border-bottom: 1px solid #e0e0e0; /* Linhas de separação */
   transition: background-color 0.2s;
 }
 
-.nav-item:hover {
-  background-color: #d8d8d8;
+.menu-link:hover {
+  background-color: #e6e6e6;
 }
 
-.nav-item.active {
-  background-color: #cccccc;
-  font-weight: bold;
+/* Efeito idêntico à imagem quando a rota está selecionada */
+.menu-link.active {
+  background-color: #e0e0e0;
 }

@@ -1,9 +1,32 @@
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <img src="assets/ford-logo.png" alt="Ford" class="logo-img">
+<!-- Botão com os 3 traços verdes sempre visível -->
+<button type="button" class="hamburger-btn" (click)="toggleMenu()" aria-label="Menu">
+  &#9776;
+</button>
+
+<!-- Fundo translúcido para fechar ao clicar fora -->
+<div class="menu-overlay" *ngIf="menuAberto" (click)="toggleMenu()"></div>
+
+<!-- Caixa do Menu Lateral (Gaveta) -->
+<aside class="sidebar-container" [ngClass]="{ 'aberto': menuAberto }">
+  <!-- Botão interno dos 3 traços para recolher -->
+  <div class="sidebar-top">
+    <button type="button" class="hamburger-inside-btn" (click)="toggleMenu()" aria-label="Fechar Menu">
+      &#9776;
+    </button>
   </div>
-  <nav class="sidebar-nav">
-    <a routerLink="/home" routerLinkActive="active" class="nav-item">Home</a>
-    <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">Dashboard</a>
+
+  <!-- Logo Oval da Ford -->
+  <div class="sidebar-logo-section">
+    <img src="img/ford.png" alt="Ford" class="ford-logo-img">
+  </div>
+
+  <!-- Links de Navegação com bordas e destaque ativo -->
+  <nav class="sidebar-menu-list">
+    <a routerLink="/home" routerLinkActive="active" class="menu-link" (click)="toggleMenu()">
+      Home
+    </a>
+    <a routerLink="/dashboard" routerLinkActive="active" class="menu-link" (click)="toggleMenu()">
+      Dashboard
+    </a>
   </nav>
 </aside>

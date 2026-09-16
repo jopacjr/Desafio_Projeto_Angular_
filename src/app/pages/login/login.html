@@ -1,7 +1,7 @@
 <div class="login-page">
   <!-- Lado Esquerdo: Imagem da Ranger -->
   <div class="login-left">
-    <img src="../../../../public/img/ranger.png" alt="Ford Ranger" class="car-image">
+    <img src="img/ranger.png" alt="Ford Ranger" class="car-image">
   </div>
 
   <!-- Lado Direito: Formulário de Login -->
@@ -9,7 +9,7 @@
     <div class="login-container">
       <!-- Logo da Ford -->
       <div class="logo-container">
-        <img src="../../../../public/img/ford.png" alt="Ford" class="ford-logo">
+        <img src="img/ford.png" alt="Ford" class="ford-logo">
       </div>
 
       <h2 class="title">Boas-vindas</h2>
@@ -23,7 +23,8 @@
             id="username" 
             class="form-input" 
             placeholder="Digite seu usuário" 
-            [(ngModel)]="username" 
+            [value]="username" 
+            (input)="username = $any($event.target).value" 
             name="username" 
             required>
         </div>
@@ -36,7 +37,8 @@
             id="password" 
             class="form-input" 
             placeholder="Digite sua senha" 
-            [(ngModel)]="password" 
+            [value]="password" 
+            (input)="password = $any($event.target).value" 
             name="password" 
             required>
         </div>
@@ -46,7 +48,8 @@
           <input 
             type="checkbox" 
             id="autoLogin" 
-            [(ngModel)]="autoLogin" 
+            [checked]="autoLogin" 
+            (change)="autoLogin = $any($event.target).checked" 
             name="autoLogin">
           <label for="autoLogin">Logar automaticamente</label>
         </div>
