@@ -1,81 +1,26 @@
-<div class="dashboard-layout">
-  <!-- Menu Lateral -->
-  <app-menu></app-menu>
-
-  <main class="dashboard-main">
-    <!-- Título do Dashboard -->
-    <h1 class="dashboard-title">Dashboard FORD</h1>
-
-    <!-- Seção Superior: Cartões de Filtro e Indicadores -->
-    <section class="cards-container">
-      <!-- Cartão 1: Seleção do Veículo -->
-      <div class="card filter-card">
-        <label for="vehicleSelect" class="card-label">Veículo</label>
-        <select 
-          id="vehicleSelect" 
-          class="vehicle-select" 
-          [value]="selectedVehicle" 
-          (change)="selectedVehicle = $any($event.target).value; onVehicleChange()">
-          <option [value]="selectedVehicle">
-            {{ selectedVehicle }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Cartões Indicadores -->
-      <div class="card stat-card">
-        <span class="card-label">Total de Vendas</span>
-        <span class="stat-number">0</span>
-        <span class="stat-unit">Unid.</span>
-      </div>
-
-      <div class="card stat-card">
-        <span class="card-label">Conectados</span>
-        <span class="stat-number">0</span>
-        <span class="stat-unit">Unid.</span>
-      </div>
-
-      <div class="card stat-card">
-        <span class="card-label">Update Software</span>
-        <span class="stat-number">0</span>
-        <span class="stat-unit">Unid.</span>
-      </div>
-    </section>
-
-    <!-- Seção Central: Imagem do Veículo Selecionado -->
-    <section class="vehicle-display">
-      <img [src]="selectedVehicle" [alt]="selectedVehicle" class="vehicle-image">
-    </section>
-
-    <!-- Seção Inferior: Tabela de Dados por VIN -->
-    <section class="table-container">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Código - Vin</th>
-            <th>Odômetro</th>
-            <th>Nível de Combustível</th>
-            <th>Status</th>
-            <th>Lat.</th>
-            <th>Long.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input 
-                type="text" 
-                class="vin-input" 
-                placeholder="2FRHDUYS2Y63NHD22454">
-            </td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
+<div>
+  <select name="" id="" (change)="veiculoEscolhido(event:$event)"></select>
+  <option value=""selected disabled hidden>Selecione uma Opção</option>
+<option  *ngFor+"let v of veiculos" [value]="v.id"></option>
+{{v.vehicle}}
+</div>
+<br>
+<div>
+  <span>Total De Vendas</span>
+  <span>{{veiculoSelecionado?.volumetotal || 0}}</span>
+</div>
+<br>
+<div>
+  <span>Conectados</span>
+  <span>{{veiculoSelecionado?.connected || 0}}</span>
+  
+</div>
+<br>
+<div>
+<span>Update Software</span>
+<span>{{veiculoSelecionado?.softwareUpdates || 0}}</span>
+</div>
+<br>
+<div>
+  <img *ngIf="veiculoSelecionado"[src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle">
 </div>

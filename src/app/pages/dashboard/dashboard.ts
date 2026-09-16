@@ -1,16 +1,39 @@
-import { Component } from '@angular/core';
-import { MenuComponent } from '../../componentes/menu/menu';
+import { Component } from "@angular/core";
+import { Vehicle } from "../../services/vehicle";
+import { Veiculo } from "../../../models/veiculo.model";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+
 
 @Component({
+ 
   selector: 'app-dashboard',
-  imports: [MenuComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
-onVehicleChange() {
-throw new Error('Method not implemented.');
-}
-selectedVehicle: any;
+ veiculos: Veiculo[]=[];
+ veiculoSelecionado: Veiculo | null=null;
 
+constructor(private vehicle:Vehicle){}
+
+ngOnInit():void{
+  this,this.vehicle.getVeiculos().subscribe(
+    response =>{
+      this.veiculos = response.vehicles.vehicles;
+
+    }
+  )
+}
+
+ veiculoEscolhido(event:Event):void{
+  const idSelecionado = (event.target as HTMLSelectElement).value;
+  if(idSelecionado){
+    this.veiculoSelecionado = this.veiculos.find(v=>v.id == Number(idSelecionado))||null;
+  }
+  else{
+    this.veiculoSelecionado = null;
+  }
+ }
 }

@@ -1,4 +1,6 @@
-export interface Veiculos extends Array<Veiculo> {}
+export interface Veiculos extends Array<Veiculos> {
+  vehicles: Veiculo[];
+}
 
 export interface Veiculo{
   id: number | string
@@ -6,6 +8,7 @@ export interface Veiculo{
   volumetotal: number | string
   connected: number | string
   softwareUpdates: number | string
+  img: string
 }
 
 export interface VeiculosAPI {

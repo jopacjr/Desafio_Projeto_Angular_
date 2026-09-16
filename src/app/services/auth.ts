@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 const USER_KEY = "auth-user";
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ logout(): void {
     sessionStorage.removeItem(USER_KEY);
     this.router.navigate(['/login']);
   }
-  estáLogado(): boolean {
+  estaLogado(): boolean {
     const user = sessionStorage.getItem(USER_KEY);
     return user? true : false
   }

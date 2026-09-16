@@ -1,7 +1,37 @@
-<form #loginFrom="ngForm" (ngSubmit)="login()">
-  <input type="text"[(ngModel)]="usuario.nome" placeholder="Digite o seu nome de usuário">
-  <br>
-  <input type="password" name="senha" [(ngModel)]="usuario.senha" placeholder="Digite a sua senha aquir">
-  <br>
-  <button type="submit">Logar</button>
-</form>
+<div class="login-page">
+  <!-- Lado Esquerdo: Imagem da Ranger -->
+  <div class="login-left">
+    <img src="img/ranger.png" alt="Ford Ranger" class="car-image">
+  </div>
+
+  <!-- Lado Direito: Formulário de Login -->
+  <div class="login-right">
+    <div class="login-container">
+      <!-- Logo da Ford -->
+      <div class="logo-container">
+        <img src="img/ford.png" alt="Ford" class="ford-logo">
+      </div>
+
+      <h2 class="title">Boas-vindas</h2>
+
+      <form #loginFrom="ngForm" (ngSubmit)="login()">
+        <!-- Campo Usuário -->
+        <div class="form-group">
+          <label for="username">Usuário</label>
+           <input type="text"[(ngModel)]="usuario.nome" name="nome" placeholder="Digite o seu nome de usuário">
+        </div>
+
+        <!-- Campo Senha -->
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" name="senha" [(ngModel)]="usuario.senha" placeholder="Digite a sua senha aquir">
+        </div>
+
+       
+
+        <!-- Botão Entrar -->
+        <button type="submit" class="btn-submit">Logar</button>
+      </form>
+    </div>
+  </div>
+</div>
