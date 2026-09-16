@@ -1,27 +1,80 @@
-<div>
-  <select name="" id="" (change)="veiculoEscolhido(event:$event)"></select>
-  <option value=""selected disabled hidden>Selecione uma Opção</option>
-<option  *ngFor+"let v of veiculos" [value]="v.id"></option>
-{{v.vehicle}}
-</div>
-<br>
-<div>
-  <span>Total De Vendas</span>
-  <span>{{veiculoSelecionado?.volumetotal || 0}}</span>
-</div>
-<br>
-<div>
-  <span>Conectados</span>
-  <span>{{veiculoSelecionado?.connected || 0}}</span>
-  
-</div>
-<br>
-<div>
-<span>Update Software</span>
-<span>{{veiculoSelecionado?.softwareUpdates || 0}}</span>
-</div>
+<div class="dashboard-container">
+ <app-menu></app-menu>
 
-<br>
-<div>
-  <img *ngIf="veiculoSelecionado"[src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle">
+  <!-- Título -->
+  <h1 class="dashboard-title">Dashboard FORD</h1>
+
+  <!-- Cards Superiores -->
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-header">Veículo</div>
+      <div class="card-body">
+        <select class="custom-select" [(ngModel)]="selectedVehicle" (change)="onVehicleChange()">
+          <option *ngFor="let option of vehicleOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Total de Vendas</div>
+      <div class="card-body">
+        <div class="metric-value">{{ totalVendas }}</div>
+        <div class="metric-unit">Unid.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Conectados</div>
+      <div class="card-body">
+        <div class="metric-value">{{ conectados }}</div>
+        <div class="metric-unit">Unid.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Update Software</div>
+      <div class="card-body">
+        <div class="metric-value">{{ updateSoftware }}</div>
+        <div class="metric-unit">Unid.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imagem Central com tratamento de erro -->
+  <div class="image-container">
+    <img [src]="vehicleImage" [alt]="selectedVehicle" class="car-image" (error)="onImageError($event)">
+  </div>
+
+  <!-- Tabela Inferior -->
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Código - Vin</th>
+          <th>Odômetro</th>
+          <th>Nível de Combustível</th>
+          <th>Status</th>
+          <th>Lat.</th>
+          <th>Long.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input 
+              type="text" 
+              class="vin-input" 
+              [(ngModel)]="searchVin" 
+              (input)="onVinSearch()" 
+              placeholder="Digite o VIN">
+          </td>
+          <td>{{ tableData.odometro }}</td>
+          <td>{{ tableData.combustivel }}</td>
+          <td>{{ tableData.status }}</td>
+          <td>{{ tableData.lat }}</td>
+          <td>{{ tableData.long }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

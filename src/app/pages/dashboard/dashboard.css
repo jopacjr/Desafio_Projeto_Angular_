@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+  padding: 20px 40px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ÍCONE DE 3 RISQUINHOS (IGUAL À HOME) */
+.menu-abrir {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  color: #28a745; /* Cor verde idêntica à Home */
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Título */
+.dashboard-title {
+  text-align: center;
+  color: #00337c;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Grid dos Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 30px auto;
+}
+
+.card {
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #555555;
+  border-bottom: 1px solid #efefef;
+  background-color: #ffffff;
+}
+
+.card-body {
+  padding: 15px 12px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0088ff;
+}
+
+.metric-unit {
+  font-size: 12px;
+  color: #888888;
+  margin-top: 2px;
+}
+
+/* Imagem Central */
+.image-container {
+  text-align: center;
+  margin: 20px 0 40px 0;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-image {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Tabela */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background-color: #00337c;
+  color: #ffffff;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.data-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.vin-input {
+  width: 100%;
+  max-width: 220px;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline: none;
+}
