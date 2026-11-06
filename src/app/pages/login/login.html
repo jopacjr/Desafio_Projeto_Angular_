@@ -1,0 +1,32 @@
+<main>
+  <section id="carro">
+    <img src="img/ranger.png" alt="ranger foto" />
+  </section>
+
+  <section id="formulario">
+    
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+      <img src="img/ford.png" alt="ford logo" />
+      <p>Boas-Vindas</p>
+
+      <div id="dados">
+        <div class="inputs">
+          &#x1F464;
+          <input type="text" [(ngModel)]="usuario.nome" name="nome" placeholder="Insira seu email" class="user_dados" />
+        </div>
+
+        <div class="inputs">
+          &#x1F512;
+          <input type="password" [(ngModel)]="usuario.senha" name="senha" placeholder="Insira sua senha" class="user_dados" />
+        </div>
+      </div>
+
+      <div id="logAutomatico">
+        <p>Logar Automaticamente</p>
+        <input type="checkbox" name="" id="checado" />
+      </div>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </section>
+</main>

@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+header {
+  padding: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/img/ranger.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% auto;
+  padding: 20px;
+}
+
+#informe {
+  display: grid;
+  width: 100%;
+  max-width: 400px;
+  min-height: 350px;
+  grid-template-rows: 40px 1fr;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(235, 235, 235, 0.7) 100%
+  );
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(180, 180, 180, 0.6);
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+#te1 {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background-color: rgba(206, 206, 206, 0.5);
+  border-bottom: 1px solid rgba(180, 180, 180, 0.5);
+  font-weight: bold;
+}
+
+#te2 {
+  display: flex;
+  padding: 20px 0px 0px 20px;
+  color: #0076ce;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  #informe {
+    max-width: 70%; 
+    min-height: 200px;
+  }
+
+  .btn {
+    margin-left: 10px;
+  }
+
+  .btn2 {
+    margin-right: 10px;
+  }
+}
