@@ -18,9 +18,11 @@
           <select name="veiculo" id="veiculos" (change)="veiculoEscolhido($event)">
             <option value="" selected disabled hidden>Selecione um veículo</option>
 
-            <option value="Ranger" *ngFor="let v of veiculos" [value]="v.id">
-              {{ v.vehicle }}
-            </option>
+            @for (v of veiculos; track v.id) {
+              <option [value]="v.id">
+                {{ v.vehicle }}
+              </option>
+            }
 
             
           </select>
@@ -35,7 +37,7 @@
 
         <div class="blocoDown2">
           <div class="blocoDown2text">
-            <h2>{{veiculoSelecionado?.volumetotal || 0 | number:'1.0-0'}}</h2>
+            <h2>{{veiculoSelecionado?.volumetotal || 0}}</h2>
             <p>Unid.</p>
           </div>
         </div>
@@ -48,7 +50,7 @@
 
         <div class="blocoDown2">
           <div class="blocoDown2text">
-            <h2>{{veiculoSelecionado?.connected || 0 | number:'1.0-0'}}</h2>
+            <h2>{{veiculoSelecionado?.connected || 0}}</h2>
             <p>Unid.</p>
           </div>
         </div>
@@ -61,7 +63,7 @@
 
         <div class="blocoDown2">
           <div class="blocoDown2text">
-            <h2>{{veiculoSelecionado?.softwareUpdates || 0 | number:'1.0-0'}}</h2>
+            <h2>{{veiculoSelecionado?.softwareUpdates || 0}}</h2>
             <p>Unid.</p>
           </div>
         </div>
@@ -71,7 +73,9 @@
   </section>
   
   <section id="imagem">
-    <img *ngIf="veiculoSelecionado" [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle" />
+    @if (veiculoSelecionado) {
+      <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle" />
+    }
   </section>
 
 
@@ -91,15 +95,17 @@
         <tr>
           <td data-label="Codigo - Vin">
             <div style="width: 100%; height: 30px; display: flex; ">
-              <input type="text" [(ngModel)]="vin" style="width: 90%; border-radius: 5px; border: 1px solid black" />
+              <input type="text" [value]="vin" (input)="vin = $any($event.target).value" style="width: 90%; border-radius: 5px; border: 1px solid black" />
               <button type="button" style="width: 8%; margin-left: 7px ; border-radius: 5px; border: 1px solid black; padding: 5px" (click)="buscarDadosVeiculo()"> > </button>
             </div>
-            <span *ngIf="mensagemErro" style="color: red; font-size: 10px" >
+            @if (mensagemErro) {
+              <span style="color: red; font-size: 10px">
                 {{ mensagemErro }}
-            </span>
+              </span>
+            }
           </td>
           <td data-label="Odometro">
-            {{ codigoVeiculo?.odometro | number:'1.0-0'  }} Km
+            {{ codigoVeiculo?.odometro || '-' }} Km
           </td>
 
           <td data-label="Nivel De Combustivel">

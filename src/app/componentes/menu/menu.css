@@ -1,0 +1,81 @@
+.btn {
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+  border-radius: 20px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+#btn1 {
+  border-radius: 20px;
+  border-color: #2A6BAC;
+  border: 2px solid black;
+  padding: 0px;
+  background-color: rgb(177, 175, 175);
+  color: white;
+  font-weight: bolder;
+}
+
+#btn2 {
+  border-radius: 20px;
+  border-color: #2A6BAC;
+  border: 2px solid black;
+  padding: 0px;
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+}
+
+#menu_lateral {
+  background-color: #36424f;
+  position: fixed;
+  height: 100vh;
+  width: 300px;
+  max-width: 60vw;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 34, 90, 0.65);
+  z-index: 5;
+}
+
+#navi {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 7px;
+}
+
+#navi img {
+  width: 80%;
+  padding: 10px 0px 0px 15px;
+}
+
+.links {
+  background-color: #9ca6ba;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  border-left: 7px solid transparent;
+}
+
+.links:hover {
+  border-left-color: #2A6BAC;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
